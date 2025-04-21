@@ -1,25 +1,24 @@
 import chalk from "chalk";
 import express from "express";
+import SacarFechaActual from "./src/time.js";
 
 const app= express()
 const port = 3000;
+const fecha = Date.now();
+const fechaParse = new Date(fecha)
 
 app.use(express.json())
 
-const nombres = [{
-    nombre: "Dekel",
-    apellido: "Usach"
-}]
+const days = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"]
 
-app.get('/', (req, res) => {
-    res.json("no hay nada bro")
+
+app.get('/hora', (req, res) => {
+    res.send(`${SacarFechaActual(fecha)}`)
 })
 
-app.post('/nombres', (req, res) => {
-    const persona = req.body;
-    nombres.push(persona);
-    res.status(201).json({ mensaje: "nombre agregado", persona });
-});
+app.get('/day', (req, res) => {
+    res.send(`${days[fechaParse.getDay()]}`)
+})
 
 
 app.listen(port, () => {
