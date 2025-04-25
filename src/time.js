@@ -1,8 +1,8 @@
-export default SacarFechaActual
+export default {SacarFechaActual, diaNombre, año, dia,month}
 
 function SacarFechaActual(tiempo){
     let tiempoParseado = new Date(tiempo)
-    
+
     let dia = tiempoParseado.getDate();
     let mes = tiempoParseado.getMonth() + 1;
     let año = tiempoParseado.getFullYear();
@@ -18,4 +18,29 @@ function SacarFechaActual(tiempo){
         fechaYHora = `${dia}/${mes}/${año} ${hora}:${minutos}:${segundos}`;
     }
     return fechaYHora
+}
+
+function diaNombre(tiempo){
+    let tiempoParseado = new Date(tiempo)
+
+    let dia = tiempoParseado.getDay();
+return dia;
+}
+function año(tiempo){
+    let tiempoParseado = new Date(tiempo)
+    let año = tiempoParseado.getFullYear();
+return año;
+}
+
+function dia(tiempo){
+    let tiempoParseado = new Date(tiempo)
+    let dia = tiempoParseado.getDate();
+    return dia;
+}
+
+
+function month(tiempo){
+    let tiempoParseado = new Date(tiempo)
+    let mes = tiempoParseado.getMonth();
+    return mes;
 }
